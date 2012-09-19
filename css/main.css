@@ -1,6 +1,6 @@
-@charset 'utf-8'
+@charset 'utf-8';
 
-
+html,
 body
 {
 	height: 100%;
@@ -24,14 +24,14 @@ a
 #gallery
 {
 	height: 494px;
-	margin: auto;
-	text-align: center;
 	position: relative;
+	overflow: hidden;
 }
 
 #gallery img
 {
 	display: inline;
+	margin: 0px 15px;
 }
 
 #rail
