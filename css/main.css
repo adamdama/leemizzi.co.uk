@@ -8,8 +8,33 @@ body
 	padding: 0px;
 }
 
+img
+{
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+a
+{
+	outline: none;
+	cursor: pointer;
+}
+
 #gallery
 {
 	height: 494px;
 	margin: auto;
+	text-align: center;
+	position: relative;
+}
+
+#gallery img
+{
+	display: inline;
+}
+
+#rail
+{
+	position: absolute;
 }
