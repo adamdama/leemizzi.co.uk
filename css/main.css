@@ -30,7 +30,7 @@ a
 
 #gallery img
 {
-	display: inline;
+	display: none;
 	margin: 0px 15px;
 }
 

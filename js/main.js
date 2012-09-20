@@ -11,29 +11,50 @@ $(document).ready(function()
 	var railWidth = 0;
 	var railHeight = 0;
 
-	$(images).each(function()
+	var init = function()
 	{
-		$('<img />').attr('src', imageFolder + '/' + this.toString())
-		.appendTo(rail)
-		.one("load", function()
+		$(images).each(function()
 		{
-			var $this = $(this);
-			
-			$this.data('xPos', railWidth);
-			
-			railWidth += $this.outerWidth(true);
-			rail.width(railWidth);
-			
-			if($this.height() > railHeight)
-				rail.height(railHeight = $this.height());
-			
-			return false;
-		})
-		.each(function()
-		{
-			if (this.complete || (jQuery.browser.msie && parseInt(jQuery.browser.version) == 6))
-				jQuery(this).trigger("load");
-		});
-	});
-});
+			$('<img />').attr('src', imageFolder + '/' + this.toString()).appendTo(rail).one("load", function()
+			{
+				var $this = $(this);
 
+				$this.data('xPos', railWidth);
+
+				railWidth += $this.outerWidth(true);
+				rail.width(railWidth);
+
+				if ($this.height() > railHeight)
+					rail.height( railHeight = $this.height());
+				
+				if($this.index() == rail.children().length - 1)
+					centerRail();
+					
+				if($this.index() === 0)
+					$this.show();
+					
+				return false;
+			}).each(function()
+			{
+				if (this.complete || (jQuery.browser.msie && parseInt(jQuery.browser.version) == 6))
+					jQuery(this).trigger("load");
+			});
+		});
+		
+		$(window).resize(centerRail);
+	};
+
+	var centerRail = function()
+	{
+		var image = rail.children().filter(function(index)
+		{
+			return $(this).is(':visible');
+		}).first();
+
+		var xPos = ($(window).width() - image.width()) / 2;
+		
+		rail.css('left', xPos + 'px');
+	};
+
+	init();
+});
