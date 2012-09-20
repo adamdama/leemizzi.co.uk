@@ -5,9 +5,9 @@
 $(document).ready(function()
 {
 	var imageFolder = 'images/portfolio';
-	var images = ['beached-book-cover-detail.jpg', 'behave-yourself-design-branding.jpg', 'behold-blue-college-piece.jpg', 'belated-god-logo.jpg', 'dbu-online-brochure-spread.jpg', 'fierce-pretty-things-college-project.jpg', 'flight-poster-design.jpg', 'giraffe-magazine-spread.jpg', 'horse-college-project.jpg', 'ioti-print-brochure.jpg', 'i-studentglobal-website-design.jpg', 'life-website-web-design-branding.jpg', 'sussexpeopledevelopment-branding-and-website.jpg', 'w-typography.jpg'];
+	var imageSrc = ['beached-book-cover-detail.jpg', 'behave-yourself-design-branding.jpg', 'behold-blue-college-piece.jpg', 'belated-god-logo.jpg', 'dbu-online-brochure-spread.jpg', 'fierce-pretty-things-college-project.jpg', 'flight-poster-design.jpg', 'giraffe-magazine-spread.jpg', 'horse-college-project.jpg', 'ioti-print-brochure.jpg', 'i-studentglobal-website-design.jpg', 'life-website-web-design-branding.jpg', 'sussexpeopledevelopment-branding-and-website.jpg', 'w-typography.jpg'];
 	
-	var thumbnails = [];
+	var images = [];
 	
 	var rail = $('#rail');
 	var railWidth = 0;
@@ -15,7 +15,7 @@ $(document).ready(function()
 
 	var init = function()
 	{
-		$(images).each(function()
+		$(imageSrc).each(function()
 		{
 			$('<img />').attr('src', imageFolder + '/' + this.toString()).appendTo(rail).one("load", function()
 			{
@@ -35,7 +35,7 @@ $(document).ready(function()
 				if ($this.index() === 0)
 					$this.show();
 					
-				
+				images.push($this);
 
 				return false;
 			}).each(function()
@@ -59,6 +59,6 @@ $(document).ready(function()
 
 		rail.css('left', xPos + 'px');
 	};
-
+	
 	init();
 }); 
