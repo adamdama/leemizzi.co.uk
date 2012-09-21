@@ -31,7 +31,7 @@ $(document).ready(function()
 					centerRail();
 
 				if ($this.index() === 0)
-					$this.show();
+					$this.addClass('active').show();
 
 				return false;
 			}).each(function()
@@ -56,6 +56,34 @@ $(document).ready(function()
 		rail.css('left', xPos + 'px');
 	};
 	
+	var changeImage = function(e)
+	{
+		var src = $(this).attr('src');
+		var current = rail.children('.active');
+		var next = rail.children('img[src="'+src+'"]');
+		
+		var dir = next.index() > current.index() ? -1 : next.index() < current.index() ? 1 : 0;
+		
+		if(dir === 0)
+			return;
+		
+		if(dir > 0)
+			rail.css('left', parseInt(rail.css('left')) - next.width());			
+		
+		var left = parseInt(rail.css('left')) + (next.width() * dir);			
+		rail.animate({left: left+'px'}, 600);
+		
+		current.fadeOut(600, function()
+		{
+			$(this).removeClass('active');
+		});
+		next.fadeIn(600, function()
+		{
+			$(this).addClass('active');
+			centerRail();
+		});
+	};
+	
 	var addThumbnails = function()
 	{
 		//config
@@ -72,8 +100,8 @@ $(document).ready(function()
 		
 		rail.children().each(function()
 		{
-			var t = $('<img />').attr('src', $(this).attr('src')).width(thumbWidth).height(thumbWidth);				
-			thumbs.append(t);
+			var t = $('<img />').attr('src', $(this).attr('src')).width(thumbWidth).height(thumbWidth);
+			t.click(changeImage).appendTo(thumbs);
 			
 			if(t.index() % rowCount !== rowCount - 1 || t.index() === 0)
 				t.css('margin-right', thumbGap);				
