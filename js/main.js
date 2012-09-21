@@ -7,8 +7,6 @@ $(document).ready(function()
 	var imageFolder = 'images/portfolio';
 	var imageSrc = ['beached-book-cover-detail.jpg', 'behave-yourself-design-branding.jpg', 'behold-blue-college-piece.jpg', 'belated-god-logo.jpg', 'dbu-online-brochure-spread.jpg', 'fierce-pretty-things-college-project.jpg', 'flight-poster-design.jpg', 'giraffe-magazine-spread.jpg', 'horse-college-project.jpg', 'ioti-print-brochure.jpg', 'i-studentglobal-website-design.jpg', 'life-website-web-design-branding.jpg', 'sussexpeopledevelopment-branding-and-website.jpg', 'w-typography.jpg'];
 	
-	var images = [];
-	
 	var rail = $('#rail');
 	var railWidth = 0;
 	var railHeight = 0;
@@ -34,8 +32,6 @@ $(document).ready(function()
 
 				if ($this.index() === 0)
 					$this.show();
-					
-				images.push($this);
 
 				return false;
 			}).each(function()
@@ -60,5 +56,30 @@ $(document).ready(function()
 		rail.css('left', xPos + 'px');
 	};
 	
+	var addThumbnails = function()
+	{
+		//config
+		var thumbWidth = 40;
+		var rowCount = 14;
+		
+		var galWidth = $('#gallery').width();
+		var thumbs = $('<div />').attr('id', 'thumbnails').css('margin', 'auto');		
+		$('#gallery').after(thumbs);
+		
+		console.log(thumbs.css('width'));
+		
+		var thumbGap = (parseInt(thumbs.css('width')) - (thumbWidth * rowCount)) / (rowCount - 1);
+		
+		rail.children().each(function()
+		{
+			var t = $('<img />').attr('src', $(this).attr('src')).width(thumbWidth).height(thumbWidth);				
+			thumbs.append(t);
+			
+			if(t.index() % rowCount !== rowCount - 1 || t.index() === 0)
+				t.css('margin-right', thumbGap);				
+		});
+	};
+	
 	init();
+	addThumbnails();
 }); 
