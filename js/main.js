@@ -94,8 +94,6 @@ $(document).ready(function()
 		var thumbs = $('<div />').attr('id', 'thumbnails').css('margin', 'auto');		
 		$('#gallery').after(thumbs);
 		
-		console.log(thumbs.css('width'));
-		
 		var thumbGap = (parseInt(thumbs.css('width')) - (thumbWidth * rowCount)) / (rowCount - 1);
 		
 		rail.children().each(function()
@@ -108,6 +106,14 @@ $(document).ready(function()
 		});
 	};
 	
+	var addCaption = function()
+	{
+		var caption = $('<div />').attr('id', 'caption').html($('<p />').text('untitled 1'));
+		
+		$('#gallery').after(caption);
+	};
+	
 	init();
 	addThumbnails();
+	addCaption();
 }); 
