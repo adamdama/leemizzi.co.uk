@@ -29,6 +29,7 @@ body
 	height: 100%;
 	margin: 0px;
 	padding: 0px;
+	font-family: Arial;
 }
 
 img
@@ -62,9 +63,11 @@ a
 	position: absolute;
 }
 
+#header,
 #thumbnails,
 #caption,
-#content
+#content,
+#footer
 {
 	width: 788px;
 	margin: auto;
