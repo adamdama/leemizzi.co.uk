@@ -1,35 +1,30 @@
 @charset 'utf-8';
-@font-face {
-    font-family: 'allerbold_italic';
-    src: url('../fonts/aller_bdit-webfont.eot');
-    src: url('../fonts/aller_bdit-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/aller_bdit-webfont.woff') format('woff'),
-         url('../fonts/aller_bdit-webfont.ttf') format('truetype'),
-         url('../fonts/aller_bdit-webfont.svg#allerbold_italic') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'allerregular';
-    src: url('../fonts/aller_rg-webfont.eot');
-    src: url('../fonts/aller_rg-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/aller_rg-webfont.woff') format('woff'),
-         url('../fonts/aller_rg-webfont.ttf') format('truetype'),
-         url('../fonts/aller_rg-webfont.svg#allerregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-html,
-body
+@font-face
 {
-	height: 100%;
+	font-family: 'allerbold_italic';
+	src: url('../fonts/aller_bdit-webfont.eot');
+	src: url('../fonts/aller_bdit-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/aller_bdit-webfont.woff') format('woff'), url('../fonts/aller_bdit-webfont.ttf') format('truetype'), url('../fonts/aller_bdit-webfont.svg#allerbold_italic') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face
+{
+	font-family: 'allerregular';
+	src: url('../fonts/aller_rg-webfont.eot');
+	src: url('../fonts/aller_rg-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/aller_rg-webfont.woff') format('woff'), url('../fonts/aller_rg-webfont.ttf') format('truetype'), url('../fonts/aller_rg-webfont.svg#allerregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+html, body
+{
+	height: auto; 
+	min-height: 100%;
 	margin: 0px;
 	padding: 0px;
 	font-family: Arial;
+	position: relative;
 }
 
 img
@@ -63,12 +58,38 @@ a
 	position: absolute;
 }
 
-#header,
-#thumbnails,
-#caption,
-#content,
-#footer
+#header, #thumbnails, #caption, #content, #footer
 {
 	width: 788px;
 	margin: auto;
+	z-index: 2;
+	position: relative;
+	margin-top: 25px;
+}
+
+#header
+{
+	height: 100px;
+}
+
+#background
+{
+	position: absolute;
+	top: 0px;
+	height: 100%; 
+	width: 100%;
+	z-index: 0;
+}
+
+#background .image
+{
+	background: url('../images/me.jpg') -280px -220px no-repeat;
+	height: 100%;
+	margin: auto;
+	z-index: 0;
+}
+
+#footer
+{
+	height: 40px;
 }
