@@ -91,7 +91,7 @@ $(document).ready(function()
 		var rowCount = 14;
 		
 		var galWidth = $('#gallery').width();
-		var thumbs = $('<div />').attr('id', 'thumbnails').css('margin', 'auto');		
+		var thumbs = $('<div />').attr('id', 'thumbnails');		
 		$('#gallery').after(thumbs);
 		
 		var thumbGap = (parseInt(thumbs.css('width')) - (thumbWidth * rowCount)) / (rowCount - 1);
