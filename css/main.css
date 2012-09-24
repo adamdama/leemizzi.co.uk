@@ -25,6 +25,8 @@ html, body
 	padding: 0px;
 	font-family: Arial;
 	position: relative;
+	font-family: 'allerregular';
+	font-size: 15px;
 }
 
 img
@@ -38,6 +40,19 @@ a
 {
 	outline: none;
 	cursor: pointer;
+	color: #000;
+	text-decoration: none;
+}
+
+.blue
+{
+	color: #979FA7;
+}
+
+.right
+{
+	float: right;
+	text-align: right;
 }
 
 #gallery
@@ -58,6 +73,11 @@ a
 	position: absolute;
 }
 
+#caption
+{
+	text-align: right;
+}
+
 #header, #thumbnails, #caption, #content, #footer
 {
 	width: 788px;
@@ -67,9 +87,46 @@ a
 	margin-top: 25px;
 }
 
+#content .left
+{
+	width: 470px;
+	display: inline-block;
+}
+
+#content .right
+{
+	font-family: 'allerbold_italic';
+}
+
+#content .right a
+{
+	display: block;
+	font-size: 20px;
+}
+
+
+#content .right h2
+{
+	margin-top: 0px;
+	margin-bottom: 5px;
+	font-size: 46px;
+	line-height: 44px;
+}
+
 #header
 {
-	height: 100px;
+	height: 110px;
+	margin-bottom: 10px;
+}
+
+#header img
+{
+	float: left;
+}
+
+#header .right
+{
+	margin-top: 85px;
 }
 
 #background

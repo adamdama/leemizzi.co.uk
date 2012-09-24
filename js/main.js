@@ -13,6 +13,8 @@ $(document).ready(function()
 
 	var init = function()
 	{
+		rail.css('visibility','hidden');
+		
 		$(imageSrc).each(function()
 		{
 			$('<img />').attr('src', imageFolder + '/' + this.toString()).appendTo(rail).one("load", function()
@@ -28,8 +30,11 @@ $(document).ready(function()
 					rail.height(railHeight = $this.height());
 
 				if ($this.index() === rail.children().length - 1)
-					centerRail();
-
+				{
+					centerRail();					
+					rail.css('visibility','visible');
+				}
+				
 				if ($this.index() === 0)
 					$this.addClass('active').show();
 
