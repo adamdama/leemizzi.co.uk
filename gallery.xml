@@ -3,7 +3,7 @@
 	<config>
 		<transition>
 			<!-- How often the gallery changes. Measured in seconds -->
-			<frequency>1.5</frequency>
+			<frequency>3</frequency>
 			<!-- Length of the animation. Measured in miliseconds -->
 			<duration>600</duration>
 		</transition>

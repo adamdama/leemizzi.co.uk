@@ -33,7 +33,7 @@ $(document).ready(function()
 				var $this = $(this);
 
 				$this.data('xPos', railWidth);
-				
+
 				$this.show();
 				railWidth += $this.outerWidth(true);
 				$this.hide();
@@ -76,6 +76,8 @@ $(document).ready(function()
 
 	var changeImage = function(e)
 	{
+		clearInterval(ap);
+
 		var src = $(this).attr('src');
 		var current = rail.children('.active');
 		var next = rail.children('img[src="' + src + '"]');
@@ -102,6 +104,8 @@ $(document).ready(function()
 		{
 			$(this).addClass('active');
 			centerRail();
+
+			ap = setInterval(autoPlay, config.transition.frequency);
 		});
 	};
 
@@ -166,12 +170,24 @@ $(document).ready(function()
 
 		config.images.folder = cf.find('folder').text();
 		config.transition.duration = parseInt(cf.find('transition').children('duration').text());
-		config.transition.frequency = parseFloat(cf.find('transition').children('frequency')) * 1000;
+		config.transition.frequency = parseFloat(cf.find('transition').children('frequency').text()) * 1000;
 
 		init();
 		addThumbnails();
 		addCaption();
 	};
 
+	var autoPlay = function()
+	{
+		var ind = rail.children(':visible').first().index();
+
+		if (rail.children().length - 1 === ind)
+			$('#thumbnails').children().first().click();
+		else
+			$('#thumbnails').children().eq(ind + 1).first().trigger('click');
+	};
+
 	loadXML();
+	console.log(config);
+	var ap = setInterval(autoPlay, config.transition.frequency);
 });
