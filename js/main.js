@@ -6,6 +6,9 @@ $(document).ready(function()
 {
 	var imageFolder = 'images/portfolio';
 	var imageSrc = ['beached-book-cover-detail.jpg', 'behave-yourself-design-branding.jpg', 'behold-blue-college-piece.jpg', 'belated-god-logo.jpg', 'dbu-online-brochure-spread.jpg', 'fierce-pretty-things-college-project.jpg', 'flight-poster-design.jpg', 'giraffe-magazine-spread.jpg', 'horse-college-project.jpg', 'ioti-print-brochure.jpg', 'i-studentglobal-website-design.jpg', 'life-website-web-design-branding.jpg', 'sussexpeopledevelopment-branding-and-website.jpg', 'w-typography.jpg'];
+	var transitionDuration = 0;
+	var transitionFrequency = 0;
+	
 	
 	var rail = $('#rail');
 	var railWidth = 0;
@@ -118,7 +121,25 @@ $(document).ready(function()
 		$('#gallery').after(caption);
 	};
 	
-	init();
-	addThumbnails();
-	addCaption();
+	var loadXML = function()
+	{
+		$.ajax({
+		    type: "GET",
+			url: "config.xml",
+			dataType: "xml",
+			success: parseXml
+		});
+	};
+	
+	var parseXML = function()
+	{
+		
+		
+	
+		init();
+		addThumbnails();
+		addCaption();
+	};
+	
+	loadXML();
 }); 
