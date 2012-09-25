@@ -4,20 +4,28 @@
  */
 $(document).ready(function()
 {
-	var imageFolder = 'images/portfolio';
-	var imageSrc = ['beached-book-cover-detail.jpg', 'behave-yourself-design-branding.jpg', 'behold-blue-college-piece.jpg', 'belated-god-logo.jpg', 'dbu-online-brochure-spread.jpg', 'fierce-pretty-things-college-project.jpg', 'flight-poster-design.jpg', 'giraffe-magazine-spread.jpg', 'horse-college-project.jpg', 'ioti-print-brochure.jpg', 'i-studentglobal-website-design.jpg', 'life-website-web-design-branding.jpg', 'sussexpeopledevelopment-branding-and-website.jpg', 'w-typography.jpg'];
-	var transitionDuration = 0;
-	var transitionFrequency = 0;
-	
-	
+	var config =
+	{
+		transition:
+		{
+			duration: 0,
+			frequency: 0
+		},
+		images:
+		{
+			list: new Array(),
+			folder: ''
+		}
+	};
+
 	var rail = $('#rail');
 	var railWidth = 0;
 	var railHeight = 0;
 
 	var init = function()
 	{
-		rail.css('visibility','hidden');
-		
+		rail.css('visibility', 'hidden');
+
 		$(imageSrc).each(function()
 		{
 			$('<img />').attr('src', imageFolder + '/' + this.toString()).appendTo(rail).one("load", function()
@@ -30,14 +38,14 @@ $(document).ready(function()
 				rail.width(railWidth);
 
 				if ($this.height() > railHeight)
-					rail.height(railHeight = $this.height());
+					rail.height( railHeight = $this.height());
 
 				if ($this.index() === rail.children().length - 1)
 				{
-					centerRail();					
-					rail.css('visibility','visible');
+					centerRail();
+					rail.css('visibility', 'visible');
 				}
-				
+
 				if ($this.index() === 0)
 					$this.addClass('active').show();
 
@@ -63,24 +71,27 @@ $(document).ready(function()
 
 		rail.css('left', xPos + 'px');
 	};
-	
+
 	var changeImage = function(e)
 	{
 		var src = $(this).attr('src');
 		var current = rail.children('.active');
-		var next = rail.children('img[src="'+src+'"]');
-		
+		var next = rail.children('img[src="' + src + '"]');
+
 		var dir = next.index() > current.index() ? -1 : next.index() < current.index() ? 1 : 0;
-		
-		if(dir === 0)
+
+		if (dir === 0)
 			return;
-		
-		if(dir > 0)
-			rail.css('left', parseInt(rail.css('left')) - next.width());			
-		
-		var left = parseInt(rail.css('left')) + (next.width() * dir);			
-		rail.animate({left: left+'px'}, 600);
-		
+
+		if (dir > 0)
+			rail.css('left', parseInt(rail.css('left')) - next.width());
+
+		var left = parseInt(rail.css('left')) + (next.width() * dir);
+		rail.animate(
+		{
+			left: left + 'px'
+		}, 600);
+
 		current.fadeOut(600, function()
 		{
 			$(this).removeClass('active');
@@ -91,55 +102,58 @@ $(document).ready(function()
 			centerRail();
 		});
 	};
-	
+
 	var addThumbnails = function()
 	{
 		//config
 		var thumbWidth = 40;
 		var rowCount = 14;
-		
+
 		var galWidth = $('#gallery').width();
-		var thumbs = $('<div />').attr('id', 'thumbnails');		
+		var thumbs = $('<div />').attr('id', 'thumbnails');
 		$('#gallery').after(thumbs);
-		
+
 		var thumbGap = (parseInt(thumbs.css('width')) - (thumbWidth * rowCount)) / (rowCount - 1);
-		
+
 		rail.children().each(function()
 		{
 			var t = $('<img />').attr('src', $(this).attr('src')).width(thumbWidth).height(thumbWidth);
 			t.click(changeImage).appendTo(thumbs);
-			
-			if(t.index() % rowCount !== rowCount - 1 || t.index() === 0)
-				t.css('margin-right', thumbGap);				
+
+			if (t.index() % rowCount !== rowCount - 1 || t.index() === 0)
+				t.css('margin-right', thumbGap);
 		});
 	};
-	
+
 	var addCaption = function()
 	{
 		var caption = $('<div />').attr('id', 'caption').html($('<p />').text('untitled 1'));
-		
+
 		$('#gallery').after(caption);
 	};
-	
+
 	var loadXML = function()
 	{
-		$.ajax({
-		    type: "GET",
+		$.ajax(
+		{
+			type: "GET",
 			url: "config.xml",
 			dataType: "xml",
 			success: parseXml
 		});
 	};
-	
-	var parseXML = function()
+
+	var parseXML = function(xml)
 	{
-		
-		
-	
+		$(xml).find("config").each(function()
+		{
+			$("#output").append($(this).attr("author") + "<br />");
+		});
+
 		init();
 		addThumbnails();
 		addCaption();
 	};
-	
+
 	loadXML();
-}); 
+});
