@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<gallery>
+	<config>
+		<transition>
+			<!-- How often the gallery changes. Measured in seconds -->
+			<frequency>1.5</frequency>
+			<!-- Length of the animation. Measured in miliseconds -->
+			<duration>600</duration>
+		</transition>
+		<!-- location of the images. Must have a trailing / -->
+		<folder>images/portfolio/</folder>
+	</config>
+	<images>
+		<image>
+			<source>beached-book-cover-detail.jpg</source>
+			<caption>xxx</caption>
+		</image>
+		<image>
+			<source>behave-yourself-design-branding.jpg</source>
+			<caption>xxx</caption>
+		</image>
+		<image>
+			<source>behold-blue-college-piece.jpg</source>
+			<caption>xxx</caption>
+		</image>
+		<image>
+			<source>belated-god-logo.jpg</source>
+			<caption>xxx</caption>
+		</image>
+		<image>
+			<source>dbu-online-brochure-spread.jpg</source>
+			<caption>xxx</caption>
+		</image>
+		<image>
+			<source>fierce-pretty-things-college-project.jpg</source>
+			<caption>xxx</caption>
+		</image>
+		<image>
+			<source>flight-poster-design.jpg</source>
+			<caption>xxx</caption>
+		</image>
+		<image>
+			<source>giraffe-magazine-spread.jpg</source>
+			<caption>xxx</caption>
+		</image>
+		<image>
+			<source>horse-college-project.jpg</source>
+			<caption>xxx</caption>
+		</image>
+		<image>
+			<source>ioti-print-brochure.jpg</source>
+			<caption>xxx</caption>
+		</image>
+		<image>
+			<source>i-studentglobal-website-design.jpg</source>
+			<caption>xxx</caption>
+		</image>
+		<image>
+			<source>life-website-web-design-branding.jpg</source>
+			<caption>xxx</caption>
+		</image>
+		<image>
+			<source>sussexpeopledevelopment-branding-and-website.jpg</source>
+			<caption>xxx</caption>
+		</image>
+		<image>
+			<source>w-typography.jpg</source>
+			<caption>xxx</caption>
+		</image>
+	</images>
+</gallery>	
