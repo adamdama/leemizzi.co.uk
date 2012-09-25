@@ -26,15 +26,17 @@ $(document).ready(function()
 	{
 		rail.css('visibility', 'hidden');
 
-		$(imageSrc).each(function()
+		$(config.images.list).each(function(i)
 		{
-			$('<img />').attr('src', imageFolder + '/' + this.toString()).appendTo(rail).one("load", function()
+			$('<img />').attr('src', config.images.folder + this.src.toString()).appendTo(rail).one("load", function()
 			{
 				var $this = $(this);
 
 				$this.data('xPos', railWidth);
-
+				
+				$this.show();
 				railWidth += $this.outerWidth(true);
+				$this.hide();
 				rail.width(railWidth);
 
 				if ($this.height() > railHeight)
@@ -90,13 +92,13 @@ $(document).ready(function()
 		rail.animate(
 		{
 			left: left + 'px'
-		}, 600);
+		}, config.transition.duration);
 
-		current.fadeOut(600, function()
+		current.fadeOut(config.transition.duration, function()
 		{
 			$(this).removeClass('active');
 		});
-		next.fadeIn(600, function()
+		next.fadeIn(config.transition.duration, function()
 		{
 			$(this).addClass('active');
 			centerRail();
@@ -137,18 +139,34 @@ $(document).ready(function()
 		$.ajax(
 		{
 			type: "GET",
-			url: "config.xml",
+			url: "gallery.xml",
 			dataType: "xml",
-			success: parseXml
+			success: parseXML
 		});
 	};
 
 	var parseXML = function(xml)
 	{
-		$(xml).find("config").each(function()
+		var cf = $(xml).find('config');
+		var imgs = $(xml).find('images');
+
+		imgs.children().each(function()
 		{
-			$("#output").append($(this).attr("author") + "<br />");
+			var src = $(this).find('source').text();
+			var cap = $(this).find('caption').text();
+
+			var img =
+			{
+				src: src,
+				caption: cap
+			};
+
+			config.images.list.push(img);
 		});
+
+		config.images.folder = cf.find('folder').text();
+		config.transition.duration = parseInt(cf.find('transition').children('duration').text());
+		config.transition.frequency = parseFloat(cf.find('transition').children('frequency')) * 1000;
 
 		init();
 		addThumbnails();
