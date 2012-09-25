@@ -85,7 +85,10 @@ $(document).ready(function()
 		var dir = next.index() > current.index() ? -1 : next.index() < current.index() ? 1 : 0;
 
 		if (dir === 0)
+		{
+			ap = setInterval(autoPlay, config.transition.frequency);
 			return;
+		}
 
 		if (dir > 0)
 			rail.css('left', parseInt(rail.css('left')) - next.width());
