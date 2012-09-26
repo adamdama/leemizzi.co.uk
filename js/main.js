@@ -31,16 +31,13 @@ $(document).ready(function()
 			$('<img />').attr('src', config.images.folder + this.src.toString()).appendTo(rail).one("load", function()
 			{
 				var $this = $(this);
-
-				$this.data('xPos', railWidth);
-
 				$this.show();
 				railWidth += $this.outerWidth(true);
 				$this.hide();
 				rail.width(railWidth);
 
 				if ($this.height() > railHeight)
-					rail.height( railHeight = $this.height());
+					rail.height(railHeight = $this.height());
 
 				if ($this.index() === rail.children().length - 1)
 				{
