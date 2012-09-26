@@ -87,6 +87,19 @@ a
 	margin-top: 25px;
 }
 
+#thumbnails .thumb
+{
+	overflow: hidden;
+	text-align: center;
+	display: inline-block;
+	position: relative;
+}
+
+#thumbnails .thumb img
+{
+	position: absolute;
+}
+
 #content .left
 {
 	width: 470px;

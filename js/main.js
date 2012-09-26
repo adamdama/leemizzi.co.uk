@@ -115,19 +115,28 @@ $(document).ready(function()
 	var addThumbnails = function()
 	{
 		//config
-		var thumbWidth = 40;
+		var thumbHeight = 40;
 		var rowCount = 14;
 
 		var galWidth = $('#gallery').width();
 		var thumbs = $('<div />').attr('id', 'thumbnails');
 		$('#gallery').after(thumbs);
 
-		var thumbGap = (parseInt(thumbs.css('width')) - (thumbWidth * rowCount)) / (rowCount - 1);
+		var thumbGap = (parseInt(thumbs.css('width')) - (thumbHeight * rowCount)) / (rowCount - 1);
 
 		rail.children().each(function()
 		{
-			var t = $('<img />').attr('src', $(this).attr('src')).width(thumbWidth).height(thumbWidth);
-			t.click(changeImage).appendTo(thumbs);
+			var img = $('<img />').attr('src', $(this).attr('src')).height(thumbHeight).click(changeImage).one("load", function()
+			{
+				$(this).css('left', (thumbHeight - $(this).width()) / 2);
+			})
+			.each(function()
+			{
+				if (this.complete || (jQuery.browser.msie && parseInt(jQuery.browser.version) === 6))
+					jQuery(this).trigger("load");
+			});
+			var t = $('<div class="thumb" />').append(img).width(thumbHeight).height(thumbHeight);
+			t.appendTo(thumbs);
 
 			if (t.index() % rowCount !== rowCount - 1 || t.index() === 0)
 				t.css('margin-right', thumbGap);
