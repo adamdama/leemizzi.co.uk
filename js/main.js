@@ -194,9 +194,9 @@ $(document).ready(function()
 		var ind = rail.children(':visible').first().index();
 
 		if (rail.children().length - 1 === ind)
-			$('#thumbnails').children().first().click();
+			$('#thumbnails').children().first().find('img').click();
 		else
-			$('#thumbnails').children().eq(ind + 1).first().trigger('click');
+			$('#thumbnails').children().eq(ind + 1).first().find('img').trigger('click');
 	};
 
 	loadXML();

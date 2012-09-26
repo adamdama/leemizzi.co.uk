@@ -78,6 +78,12 @@ a
 	text-align: right;
 }
 
+#caption p
+{
+	margin: 0px;
+	padding: 0px;
+}
+
 #header, #thumbnails, #caption, #content, #footer
 {
 	width: 788px;
