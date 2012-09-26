@@ -141,7 +141,7 @@ a
 
 #background .image
 {
-	background: url('../images/me.jpg') -280px -220px no-repeat;
+	background: url('../images/me.jpg') -280px -180px no-repeat;
 	height: 100%;
 	margin: auto;
 	z-index: 0;
