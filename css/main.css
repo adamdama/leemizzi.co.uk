@@ -82,6 +82,7 @@ a
 {
 	margin: 0px;
 	padding: 0px;
+	display: none;
 }
 
 #header, #thumbnails, #caption, #content, #footer
