@@ -83,6 +83,7 @@ a
 	margin: 0px;
 	padding: 0px;
 	display: none;
+	word-wrap: break-word;
 }
 
 #header, #thumbnails, #caption, #content, #footer

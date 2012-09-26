@@ -104,11 +104,6 @@ $(document).ready(function()
 		{
 			left: left + 'px'
 		}, config.transition.duration);
-
-		current.fadeOut(config.transition.duration, function()
-		{
-			$(this).removeClass('active');
-		});
 		
 		next.fadeIn(config.transition.duration, function()
 		{
@@ -117,6 +112,20 @@ $(document).ready(function()
 
 			ap = setInterval(autoPlay, config.transition.frequency);
 		});
+
+		current.fadeOut(config.transition.duration, function()
+		{
+			$(this).removeClass('active');
+		});
+				
+		var caption = $('#caption');
+		var nextCap = caption.children().eq(next.index());
+		nextCap.show();
+		var h = nextCap.height();
+		nextCap.hide();
+		caption.animate({'height': h}, config.transition.duration)
+		caption.children(':visible').fadeOut(config.transition.duration / 2);
+		nextCap.fadeIn(config.transition.duration / 2);
 	};
 
 	var addThumbnails = function()
