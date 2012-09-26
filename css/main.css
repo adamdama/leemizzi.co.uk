@@ -102,7 +102,7 @@ a
 
 #content .left
 {
-	width: 470px;
+	width: 540px;
 	display: inline-block;
 }
 
@@ -114,16 +114,17 @@ a
 #content .right a
 {
 	display: block;
-	font-size: 20px;
+	font-size: 18px;
+	letter-spacing: 2px;
+	margin-bottom: 6px;
 }
-
 
 #content .right h2
 {
 	margin-top: 0px;
-	margin-bottom: 5px;
-	font-size: 46px;
-	line-height: 44px;
+	margin-bottom: 12px;
+	font-size: 40px;
+	line-height: 28px;
 }
 
 #header
