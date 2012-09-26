@@ -44,13 +44,19 @@ $(document).ready(function()
 
 				if ($this.index() === rail.children().length - 1)
 				{
-					centerRail();
 					rail.css('visibility', 'visible');
+					
+					setTimeout(function()
+					{
+						centerRail();
+					}, 800);					
 				}
 
 				if ($this.index() === 0)
 					$this.addClass('active').show();
-
+				
+				centerRail();
+				
 				return false;
 			}).each(function()
 			{
@@ -103,6 +109,7 @@ $(document).ready(function()
 		{
 			$(this).removeClass('active');
 		});
+		
 		next.fadeIn(config.transition.duration, function()
 		{
 			$(this).addClass('active');
@@ -126,15 +133,32 @@ $(document).ready(function()
 
 		rail.children().each(function()
 		{
-			var img = $('<img />').attr('src', $(this).attr('src')).height(thumbHeight).click(changeImage).one("load", function()
+			var center = function(img)
 			{
-				$(this).css('left', (thumbHeight - $(this).width()) / 2);
+				$(img).css('left', (thumbHeight - $(img).width()) / 2);
+			};
+			
+			var img = $('<img />').attr('src', $(this).attr('src')).height(thumbHeight).one("load", function()
+			{
+				if($(this).width() == 0)
+				{
+					var $this = $(this);
+					
+					setTimeout(function()
+					{
+						center($this);
+					}, 800);
+				}
+				else
+					center($(this));
 			})
 			.each(function()
 			{
 				if (this.complete || (jQuery.browser.msie && parseInt(jQuery.browser.version) === 6))
 					jQuery(this).trigger("load");
-			});
+			})
+			.click(changeImage);
+			
 			var t = $('<div class="thumb" />').append(img).width(thumbHeight).height(thumbHeight);
 			t.appendTo(thumbs);
 
@@ -145,7 +169,16 @@ $(document).ready(function()
 
 	var addCaption = function()
 	{
-		var caption = $('<div />').attr('id', 'caption').html($('<p />').text('untitled 1'));
+		var caption = $('<div />').attr('id', 'caption');
+		
+		rail.children().each(function(i)
+		{
+			var cap = config.images.list[i].caption;
+			var p = $('<p />').text(cap).appendTo(caption);
+			
+			if(i == 0)
+				p.show();
+		});		
 
 		$('#gallery').after(caption);
 	};
