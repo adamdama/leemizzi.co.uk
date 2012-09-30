@@ -46,7 +46,7 @@ a
 
 .blue
 {
-	color: #979FA7;
+	color: #5A849E;
 }
 
 .right
@@ -138,7 +138,8 @@ a
 #header
 {
 	height: 110px;
-	margin-top: 10px;
+	padding-top: 10px;
+	margin-top: 0px;
 	margin-bottom: 10px;
 }
 
