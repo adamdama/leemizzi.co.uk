@@ -3,7 +3,7 @@
  * @email: adamdama@hotmail.com
  */
 $(document).ready(function()
-{
+{	
 	var config =
 	{
 		transition:
@@ -37,23 +37,34 @@ $(document).ready(function()
 				rail.width(railWidth);
 
 				if ($this.height() > railHeight)
-					rail.height(railHeight = $this.height());
+					rail.height( railHeight = $this.height());
 
 				if ($this.index() === rail.children().length - 1)
 				{
 					rail.css('visibility', 'visible');
-					
+
 					setTimeout(function()
 					{
 						centerRail();
-					}, 800);					
+					}, 800);
 				}
 
 				if ($this.index() === 0)
 					$this.addClass('active').show();
-				
+
 				centerRail();
-				
+
+				$this.click(function()
+				{
+					Shadowbox.open(
+					{
+						width: $this.width(),
+						height: $this.height(),
+						content: $('<div />').append($this.clone()).html(),
+						player: 'html'
+					});
+				});
+
 				return false;
 			}).each(function()
 			{
@@ -101,7 +112,7 @@ $(document).ready(function()
 		{
 			left: left + 'px'
 		}, config.transition.duration);
-		
+
 		next.fadeIn(config.transition.duration, function()
 		{
 			$(this).addClass('active');
@@ -114,13 +125,16 @@ $(document).ready(function()
 		{
 			$(this).removeClass('active');
 		});
-				
+
 		var caption = $('#caption');
 		var nextCap = caption.children().eq(next.index());
 		nextCap.show();
 		var h = nextCap.height();
 		nextCap.hide();
-		caption.animate({'height': h}, config.transition.duration)
+		caption.animate(
+		{
+			'height': h
+		}, config.transition.duration)
 		caption.children(':visible').fadeOut(config.transition.duration / 2);
 		nextCap.fadeIn(config.transition.duration / 2);
 	};
@@ -143,13 +157,13 @@ $(document).ready(function()
 			{
 				$(img).css('left', (thumbHeight - $(img).width()) / 2);
 			};
-			
+
 			var img = $('<img />').attr('src', $(this).attr('src')).height(thumbHeight).one("load", function()
 			{
-				if($(this).width() == 0)
+				if ($(this).width() == 0)
 				{
 					var $this = $(this);
-					
+
 					setTimeout(function()
 					{
 						center($this);
@@ -157,14 +171,12 @@ $(document).ready(function()
 				}
 				else
 					center($(this));
-			})
-			.each(function()
+			}).each(function()
 			{
 				if (this.complete || (jQuery.browser.msie && parseInt(jQuery.browser.version) === 6))
 					jQuery(this).trigger("load");
-			})
-			.click(changeImage);
-			
+			}).click(changeImage);
+
 			var t = $('<div class="thumb" />').append(img).width(thumbHeight).height(thumbHeight);
 			t.appendTo(thumbs);
 
@@ -176,15 +188,15 @@ $(document).ready(function()
 	var addCaption = function()
 	{
 		var caption = $('<div />').attr('id', 'caption');
-		
+
 		rail.children().each(function(i)
 		{
 			var cap = config.images.list[i].caption;
 			var p = $('<p />').text(cap).appendTo(caption);
-			
-			if(i == 0)
+
+			if (i == 0)
 				p.show();
-		});		
+		});
 
 		$('#gallery').after(caption);
 	};
@@ -242,3 +254,5 @@ $(document).ready(function()
 	console.log(config);
 	var ap = setInterval(autoPlay, config.transition.frequency);
 });
+
+Shadowbox.init();
