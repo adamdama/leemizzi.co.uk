@@ -6,7 +6,7 @@
 Shadowbox.init();
 
 $(document).ready(function()
-{	
+{
 	var config =
 	{
 		transition:
@@ -46,6 +46,14 @@ $(document).ready(function()
 				{
 					rail.css('visibility', 'visible');
 
+					var rw = 0;
+					rail.children().each(function()
+					{
+						rw += getImgWidth(this);
+						console.log(rw);
+					});
+					rail.width(rw);
+
 					setTimeout(function()
 					{
 						centerRail();
@@ -59,15 +67,16 @@ $(document).ready(function()
 
 				$this.click(function()
 				{
-					var op = {
+					var op =
+					{
 						width: $this.width() + 1,
 						height: $this.height() + 1,
 						content: $('<div />').append($this.clone()).html(),
 						player: 'html'
 					};
-					
+
 					console.log(op);
-					
+
 					Shadowbox.open(op);
 				});
 
@@ -256,7 +265,14 @@ $(document).ready(function()
 			$('#thumbnails').children().eq(ind + 1).first().find('img').trigger('click');
 	};
 
+	function getImgWidth(img_element)
+	{
+		var t = new Image();
+		t.src = (img_element.getAttribute ? img_element.getAttribute("src") : false) || img_element.src;
+		return t.width;
+	}
+
 	loadXML();
 	console.log(config);
 	var ap = setInterval(autoPlay, config.transition.frequency);
-});
+}); 
