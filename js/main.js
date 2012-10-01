@@ -2,6 +2,9 @@
  * @author: Adam Cox
  * @email: adamdama@hotmail.com
  */
+
+Shadowbox.init();
+
 $(document).ready(function()
 {	
 	var config =
@@ -56,13 +59,16 @@ $(document).ready(function()
 
 				$this.click(function()
 				{
-					Shadowbox.open(
-					{
-						width: $this.width(),
-						height: $this.height(),
+					var op = {
+						width: $this.width() + 1,
+						height: $this.height() + 1,
 						content: $('<div />').append($this.clone()).html(),
 						player: 'html'
-					});
+					};
+					
+					console.log(op);
+					
+					Shadowbox.open(op);
 				});
 
 				return false;
@@ -254,5 +260,3 @@ $(document).ready(function()
 	console.log(config);
 	var ap = setInterval(autoPlay, config.transition.frequency);
 });
-
-Shadowbox.init();
