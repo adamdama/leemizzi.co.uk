@@ -156,7 +156,7 @@ a
 
 #background
 {
-	position: absolute;
+	position: fixed;
 	top: 0px;
 	height: 100%; 
 	width: 100%;
@@ -166,9 +166,9 @@ a
 #background .image
 {
 	background: url('../images/me.jpg') -280px -180px no-repeat;
-	height: 100%;
 	margin: auto;
 	z-index: 0;
+	height: 100%;
 }
 
 #footer
