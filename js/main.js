@@ -45,7 +45,6 @@ $(document).ready(function()
 
 				if ($this.index() === rail.children().length - 1)
 				{
-					rail.css('visibility', 'visible');
 
 					var rw = 0;
 					rail.children().each(function()
@@ -58,6 +57,7 @@ $(document).ready(function()
 					setTimeout(function()
 					{
 						centerRail();
+						rail.css('visibility', 'visible').css('display','none').fadeIn(600);
 					}, 800);
 				}
 
@@ -91,6 +91,11 @@ $(document).ready(function()
 		});
 
 		$(window).resize(centerRail);
+		$('#header .left').click(function()
+		{
+			//$('#thumbnails').find('img').first().trigger('click');
+			window.location.reload();
+		});
 	};
 
 	var centerRail = function()
