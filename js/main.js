@@ -24,6 +24,7 @@ $(document).ready(function()
 	var rail = $('#rail');
 	var railWidth = 0;
 	var railHeight = 0;
+	var animating = false;
 
 	var init = function()
 	{
@@ -67,6 +68,9 @@ $(document).ready(function()
 
 				$this.click(function()
 				{
+					if (animating)
+						return;
+
 					var op =
 					{
 						width: $this.width() + 1,
@@ -74,8 +78,6 @@ $(document).ready(function()
 						content: $('<div />').append($this.clone()).html(),
 						player: 'html'
 					};
-
-					console.log(op);
 
 					Shadowbox.open(op);
 				});
@@ -105,6 +107,10 @@ $(document).ready(function()
 
 	var changeImage = function(e)
 	{
+
+		if (animating)
+			return;
+
 		clearInterval(ap);
 
 		var src = $(this).attr('src');
@@ -123,6 +129,9 @@ $(document).ready(function()
 			rail.css('left', parseInt(rail.css('left')) - next.width());
 
 		var left = parseInt(rail.css('left')) + (next.width() * dir);
+		
+		animating = true;
+		
 		rail.animate(
 		{
 			left: left + 'px'
@@ -132,7 +141,8 @@ $(document).ready(function()
 		{
 			$(this).addClass('active');
 			centerRail();
-
+			
+			animating = false;
 			ap = setInterval(autoPlay, config.transition.frequency);
 		});
 
@@ -275,4 +285,4 @@ $(document).ready(function()
 	loadXML();
 	console.log(config);
 	var ap = setInterval(autoPlay, config.transition.frequency);
-}); 
+});
