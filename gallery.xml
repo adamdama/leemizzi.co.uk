@@ -3,7 +3,7 @@
 	<config>
 		<transition>
 			<!-- How often the gallery changes. Measured in seconds -->
-			<frequency>3</frequency>
+			<frequency>6</frequency>
 			<!-- Length of the animation. Measured in miliseconds -->
 			<duration>600</duration>
 		</transition>
@@ -12,60 +12,60 @@
 	</config>
 	<images>
 		<image>
-			<source>beached-book-cover-detail.jpg</source>
-			<caption></caption>
-		</image>
-		<image>
 			<source>behave-yourself-design-branding.jpg</source>
-			<caption></caption>
-		</image>
-		<image>
-			<source>behold-blue-college-piece.jpg</source>
-			<caption></caption>
-		</image>
-		<image>
-			<source>belated-god-logo.jpg</source>
-			<caption></caption>
-		</image>
-		<image>
-			<source>dbu-online-brochure-spread.jpg</source>
-			<caption></caption>
-		</image>
-		<image>
-			<source>fierce-pretty-things-college-project.jpg</source>
-			<caption></caption>
-		</image>
-		<image>
-			<source>flight-poster-design.jpg</source>
-			<caption></caption>
-		</image>
-		<image>
-			<source>giraffe-magazine-spread.jpg</source>
-			<caption></caption>
-		</image>
-		<image>
-			<source>horse-college-project.jpg</source>
-			<caption></caption>
-		</image>
-		<image>
-			<source>ioti-print-brochure.jpg</source>
-			<caption></caption>
+			<caption>'behave yourself' - part of branding series</caption>
 		</image>
 		<image>
 			<source>i-studentglobal-website-design.jpg</source>
-			<caption></caption>
+			<caption>'www.i-studentglobal.com' - website design and branding </caption>
 		</image>
 		<image>
-			<source>life-website-web-design-branding.jpg</source>
-			<caption></caption>
+			<source>humboldt-app.jpg</source>
+			<caption>'Humboldt university iPad app' - app design and interface creation</caption>
+		</image>
+		<image>
+			<source>belated-god-logo.jpg</source>
+			<caption>'belated logo for god' - enough said</caption>
+		</image>
+		<image>
+<source>life-website-web-design-branding.jpg</source>
+			<caption>'life water website' - part of my website, packaging and marketing work with life water </caption>
+		</image>
+		<image>
+			<source>glass-bottle-designs.jpg</source>
+			<caption>'life glass bottles' - designs for premium glass bottle for life water</caption>
+		</image>
+		<image>
+			<source>flight-poster-design.jpg</source>
+			<caption>'flight' - print design</caption>
+		</image>
+		<image>
+			<source>giraffe-magazine-spread.jpg</source>
+			<caption>'woman facts' - text, artwork and design for comedy magazine 'Giraffe' </caption>
+		</image>
+		<image>
+			<source>media-pack-design.jpg</source>
+			<caption>'media pack' - spread from an online media pack </caption>
+		</image>
+		<image>
+			<source>ioti-print-brochure.jpg</source>
+			<caption>'Irish institutes of technology' - spread from print brochure for the IOTI</caption>
+		</image>
+		<image>
+			<source>beached-book-cover-detail.jpg</source>
+			<caption>'Beached' - Book cover design</caption>
+		</image>
+		<image>
+			<source>dbu-online-brochure-spread.jpg</source>
+			<caption>'Dallas Baptist University Brochure' - spread from e-brochure design</caption>
 		</image>
 		<image>
 			<source>sussexpeopledevelopment-branding-and-website.jpg</source>
-			<caption></caption>
+			<caption>'www.sussexpeopledevelopment.co.uk' - branding and website</caption>
 		</image>
 		<image>
 			<source>w-typography.jpg</source>
-			<caption></caption>
+			<caption>'Double u' - college typographical loveliness</caption>
 		</image>
 	</images>
 </gallery>	
